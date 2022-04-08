@@ -10,41 +10,48 @@ const updateTotalTasks = () => {
 
 updateTotalTasks()
 
-formAdd.addEventListener('submit', event => {
+const addTodo = event => {
    event.preventDefault()
 
    const inputValue = event.target.add.value.trim()
 
    if (inputValue.length) {
       todosContainer.innerHTML += `
-      <li class="todo__item">
-         <span>${inputValue}</span>
-         <i class="ri-delete-bin-line delete__icon"></i>
-      </li>`
+         <li class="todo__item" data-todo="${inputValue}">
+            <span>${inputValue}</span>
+            <i class="ri-delete-bin-line delete__icon" data-todo-delete="${inputValue}"></i>
+         </li>`
 
       updateTotalTasks()
       event.target.reset()
    }
-})
+}
 
-formSearch.addEventListener('input', event => {
+const searchTodo = event => {
    const inputValue = event.target.value.toLowerCase().trim()
+   const todoChildren = Array.from(todosContainer.children)
 
-   Array.from(todosContainer.children)
-      .forEach(todo => {
-         if (!todo.textContent.toLowerCase().includes(inputValue)) {
-            todo.classList.add('hidden')
-            return
-         }
-         todo.classList.remove('hidden')
-      })
-})
+   todoChildren.forEach(todo => {
+      const todoTextInLowerCase = todo.textContent.toLowerCase()
+      const todoHasTheWord = todoTextInLowerCase.includes(inputValue)
 
-todosContainer.addEventListener('click', event => {
-   const clickedElement = event.target
+      if (!todoHasTheWord) {
+         todo.classList.add('hidden')
+         return
+      }
+      todo.classList.remove('hidden')
+   })
+}
 
-   if (Array.from(clickedElement.classList).includes('delete__icon')) {
-      clickedElement.parentElement.remove()
-      updateTotalTasks()
+const removeTodo = event => {
+   const deleteIconDataset = event.target.dataset.todoDelete
+   const todoElement = document.querySelector(`[data-todo="${deleteIconDataset}"]`)
+
+   if (deleteIconDataset) {
+      todoElement.remove()
    }
-})
+}
+
+formAdd.addEventListener('submit', addTodo)
+formSearch.addEventListener('input', searchTodo)
+todosContainer.addEventListener('click', removeTodo)
