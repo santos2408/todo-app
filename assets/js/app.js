@@ -1,13 +1,12 @@
 const todosContainer = document.querySelector('[data-todo="todos-container"]')
-const formAdd = document.querySelector('[data-form-add="form-add"]')
-const formSearch = document.querySelector('[data-form-search="form-search"]')
+const inputAddTodo = document.querySelector('[data-form-add="form-add"]')
+const inputSearchTodo = document.querySelector('[data-form-search="form-search"]')
 const totalTasks = document.querySelector('[data-total-tasks="total-tasks"]')
 
 const updateTotalTasks = () => {
    let tasksAmount = todosContainer.children.length
    totalTasks.textContent = `${tasksAmount} Tasks`
 }
-
 updateTotalTasks()
 
 const addTodo = event => {
@@ -27,20 +26,25 @@ const addTodo = event => {
    }
 }
 
+const filterTodo = (todoChildren, inputValue) => {
+   todoChildren
+      .filter(todo => !todo.textContent.toLowerCase().includes(inputValue))
+      .forEach(todo => {
+         todo.classList.add('hidden')
+      })
+
+   todoChildren
+      .filter(todo => todo.textContent.toLowerCase().includes(inputValue))
+      .forEach(todo => {
+         todo.classList.remove('hidden')
+   })
+}
+
 const searchTodo = event => {
    const inputValue = event.target.value.toLowerCase().trim()
    const todoChildren = Array.from(todosContainer.children)
-
-   todoChildren.forEach(todo => {
-      const todoTextInLowerCase = todo.textContent.toLowerCase()
-      const todoHasTheWord = todoTextInLowerCase.includes(inputValue)
-
-      if (!todoHasTheWord) {
-         todo.classList.add('hidden')
-         return
-      }
-      todo.classList.remove('hidden')
-   })
+   
+   filterTodo(todoChildren, inputValue)
 }
 
 const removeTodo = event => {
@@ -49,9 +53,10 @@ const removeTodo = event => {
 
    if (deleteIconDataset) {
       todoElement.remove()
+      updateTotalTasks()
    }
 }
 
-formAdd.addEventListener('submit', addTodo)
-formSearch.addEventListener('input', searchTodo)
+inputAddTodo.addEventListener('submit', addTodo)
+inputSearchTodo.addEventListener('input', searchTodo)
 todosContainer.addEventListener('click', removeTodo)
