@@ -45,6 +45,7 @@ input {
 
 .main {
    display: grid;
+   grid-template-columns: minmax(260px, 400px);
    place-content: center;
    row-gap: 0.625rem;
    padding: 2.5rem 0;
@@ -54,9 +55,10 @@ input {
 
 .container {
    background-color: var(--base-color-white);
-   border-radius: 10px;
+   border-radius: 5px;
    padding: 1.5625rem 1.25rem;
-   max-width: 25rem;
+   margin: 0 1.25rem;
+   max-width: 400px;
 }
 
 .header__info {
@@ -101,12 +103,18 @@ input {
    background-color: var(--second-color-alt);
    border-radius: 5px;
    padding: 0.9375rem;
-   transition: .3s;
+   transition: box-shadow .3s;
 }
 
 .input__search,
 .input__search::placeholder {
    color: var(--base-color-white);
+}
+
+.input__search:focus {
+   outline-style: solid;
+   outline-width: 2px;
+   outline-color: #5759dcbb;
 }
 
 .input__search:hover,
@@ -161,7 +169,7 @@ input {
 
 .input__add {
    flex: 1;
-   padding-right: 20px;
+   margin-right: 1.25rem;
 }
 
 .input__add::placeholder {
@@ -173,8 +181,7 @@ input {
    justify-content: center;
    align-items: center;
    background-color: var(--first-color);
-   width: 45px;
-   height: 45px;
+   padding: 0.625rem;
    border-radius: 50%;
    border: none;
    cursor: pointer;
@@ -188,5 +195,33 @@ input {
 .button__icon {
    font-size: 1.5rem;
    color: var(--base-color-white);
+}
+
+@media screen and (max-width: 375px) {
+   .container {
+      padding: 1.5625rem 1rem;
+      margin: 0 0.625rem;
+   }
+
+   .form__add {
+      padding: 0.9375rem 1rem;
+   }
+
+   .input__add {
+      margin-right: 0.625rem;
+   }
+
+   .input__add-button {
+      padding: 0.2rem;
+   }
+
+   .delete__icon {
+      padding: 5px;
+      font-size: 1.3rem;
+   }
+
+   .todo__item span {
+      font-size: 14px;
+   }
 }
 
