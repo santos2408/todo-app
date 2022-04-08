@@ -63,7 +63,7 @@ input {
 
 .header__info {
    display: grid;
-   grid-template-columns: 1fr 1fr;
+   grid-template-columns: 2fr 1fr;
    row-gap: 0.625rem;
    margin-bottom: 1.5625rem;
 }
@@ -225,7 +225,7 @@ input {
    }
 }
 
-/* JAVASCRIPT */
+/* =============== JAVASCRIPT CLASSES =============== */
 
 .hidden {
    display: none;
