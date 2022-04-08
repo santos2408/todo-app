@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!--=========== GOOGLE FONTS ===========-->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+   <!--=========== REMIX ICON ===========-->
+   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+   <!--=========== CSS ===========-->
+   <link rel="stylesheet" href="./assets/css/style.css">
+   <title>Todo | App</title>
+</head>
+
+<body>
+   <main class="main">
+      <div class="container">
+         <!--=========== HEADER ===========-->
+         <header class="header">
+            <div class="header__info">
+               <h1 class="header__info-title">Thursday, <span class="span-title">10th<span></h1>
+               <span class="header__info-month">December</span>
+               <span class="header__info-tasks">3 Tasks</span>
+            </div>
+            <div class="form__search">
+               <input type="text" class="input__search" name="search" placeholder="Search your task" data-form-search="form-search" autocomplete="off" autofocus>
+            </div>
+         </header>
+         <!--=========== TODOS ===========-->
+         <ul class="todos__container" data-todo="todos-container">
+            <li class="todo__item">
+               <span>Morning Run</span>
+               <i class="ri-delete-bin-line delete__icon"></i>
+            </li>
+            <li class="todo__item">
+               <span>Buy Pizza on the way to work</span>
+               <i class="ri-delete-bin-line delete__icon"></i>
+            </li>
+            <li class="todo__item" data-todo="Gym">
+               <span>Gym</span>
+               <i class="ri-delete-bin-line delete__icon"></i>
+            </li>
+         </ul>
+      </div>
+      <form class="container form__add">
+         <input type="text" class="input__add" name="add" placeholder="Type your task" autocomplete="off">
+         <button class="input__add-button">
+            <i class="ri-add-fill button__icon"></i>
+         </button>
+      </form>
+   </main>
+
+   <script src="./assets/js/app.js"></script>
+</body>
+
+</html>
