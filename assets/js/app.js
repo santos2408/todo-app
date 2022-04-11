@@ -13,6 +13,7 @@ const addTodo = event => {
    event.preventDefault()
 
    const inputValue = event.target.add.value.trim()
+   
    if (inputValue.length) {
       todosContainer.innerHTML += `
          <li class="todo__item" data-todo="${inputValue}">
@@ -25,7 +26,10 @@ const addTodo = event => {
    }
 }
 
-const filterTodo = (todoChildren, inputValue) => {
+const searchTodo = event => {
+   const inputValue = event.target.value.toLowerCase().trim()
+   const todoChildren = Array.from(todosContainer.children)
+   
    todoChildren
       .filter(todo => !todo.textContent.toLowerCase().includes(inputValue))
       .forEach(todo => {
@@ -37,13 +41,6 @@ const filterTodo = (todoChildren, inputValue) => {
       .forEach(todo => {
          todo.classList.remove('hidden')
       })
-}
-
-const searchTodo = event => {
-   const inputValue = event.target.value.toLowerCase().trim()
-   const todoChildren = Array.from(todosContainer.children)
-   
-   filterTodo(todoChildren, inputValue)
 }
 
 const removeTodo = event => {
