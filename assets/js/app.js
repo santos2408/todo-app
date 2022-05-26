@@ -70,9 +70,9 @@ const removeTodo = event => {
    }
 }
 
-updatePresentDate()
-updateTotalTasks()
-
 inputAddTodo.addEventListener('submit', addTodo)
 inputSearchTodo.addEventListener('input', searchTodo)
 todosContainer.addEventListener('click', removeTodo)
+
+updatePresentDate()
+updateTotalTasks()
