@@ -1,14 +1,13 @@
 const dateTitleContainer = document.querySelector('[data-js="weekday"]')
 const monthNameContainer = document.querySelector('[data-js="month-name"]')
-
-const span = document.createElement('span')
-
+const totalTasks = document.querySelector('[data-total-tasks="total-tasks"]')
 const todosContainer = document.querySelector('[data-todo="todos-container"]')
 const inputAddTodo = document.querySelector('[data-form-add="form-add"]')
 const inputSearchTodo = document.querySelector('[data-form-search="form-search"]')
-const totalTasks = document.querySelector('[data-total-tasks="total-tasks"]')
 
-const getPresentDate = () => {
+const span = document.createElement('span')
+
+const updatePresentDate = () => {
    const present = new Date()
    const weekday = present.toLocaleDateString('en-US', { weekday: 'long' })
    const monthDay = `${present.getDate()}th`
@@ -71,7 +70,7 @@ const removeTodo = event => {
    }
 }
 
-getPresentDate()
+updatePresentDate()
 updateTotalTasks()
 
 inputAddTodo.addEventListener('submit', addTodo)
