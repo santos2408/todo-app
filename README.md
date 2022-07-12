@@ -65,7 +65,7 @@ O usurário deve ser capaz de:
 
 ### O Que Aprendi
 
-Utilizando do desafio proposto, aprimorei meu conhecimento na linguagem Javascript pura, sem nenhum tipo de biblioteca ou frame work. Aprimorei também a manipulação do DOM e métodos de array.
+Utilizando do desafio proposto, aprimorei meu conhecimento na linguagem Javascript pura, sem nenhum tipo de biblioteca ou framework. Aprimorei também a manipulação do DOM e métodos de array.
 
 <!-- To see how you can add code snippets, see below:
 
