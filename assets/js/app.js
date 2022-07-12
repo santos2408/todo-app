@@ -103,6 +103,6 @@ inputAddTodo.addEventListener('submit', addTodo)
 inputSearchTodo.addEventListener('input', searchTodo)
 todosContainer.addEventListener('click', removeTodo)
 
-getTodosIntoLocaleStorage()
 updatePresentDate()
 updateTotalTasks()
+getTodosIntoLocaleStorage()
