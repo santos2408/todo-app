@@ -7,11 +7,17 @@ const inputSearchTodo = document.querySelector('[data-form-search="form-search"]
 
 const span = document.createElement('span')
 
-const updatePresentDate = () => {
+const getDate = () => {
    const present = new Date()
-   const weekday = present.toLocaleDateString('en-US', { weekday: 'long' })
    const monthDay = `${present.getDate()}th`
+   const weekday = present.toLocaleDateString('en-US', { weekday: 'long' })
    const monthName = present.toLocaleDateString('en-US', { month: 'long' })
+
+   return [monthDay, weekday, monthName]
+}
+
+const updatePresentDate = () => {
+   const [ monthDay, weekday, monthName ] = getDate()
 
    dateTitleContainer.textContent = `${weekday}, `
    monthNameContainer.textContent = monthName
