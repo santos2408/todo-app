@@ -7,6 +7,27 @@ const inputSearchTodo = document.querySelector('[data-form-search="form-search"]
 
 const span = document.createElement('span')
 
+const setTodosIntoLocalStorage = () => {
+   const todos = Array.from(todosContainer.children)
+   const todosToObjects = todos.map(todo => ({ todo: todo.innerText }))
+   const todosToJSON = JSON.stringify(todosToObjects)
+
+   localStorage.setItem('todos', todosToJSON)
+}
+
+const getTodosIntoLocaleStorage = () => {
+   const todosFromLocalStorage = localStorage.getItem('todos')
+   const todos = JSON.parse(todosFromLocalStorage)
+   
+   todos.forEach(({ todo }) => {
+      todosContainer.innerHTML += `
+         <li class="todo__item" data-todo="${todo}">
+            <span>${todo}</span>
+            <i class="ri-delete-bin-line delete__icon" data-todo-delete="${todo}"></i>
+         </li>`
+   })
+}
+
 const getDate = () => {
    const present = new Date()
    const monthDay = `${present.getDate()}th`
@@ -43,7 +64,8 @@ const addTodo = event => {
             <span>${inputValue}</span>
             <i class="ri-delete-bin-line delete__icon" data-todo-delete="${inputValue}"></i>
          </li>`
-
+         
+      setTodosIntoLocalStorage()
       updateTotalTasks()
       event.target.reset()
    }
@@ -72,6 +94,7 @@ const removeTodo = event => {
 
    if (deleteIconDataset) {
       todoElement.remove()
+      setTodosIntoLocalStorage()
       updateTotalTasks()
    }
 }
@@ -80,5 +103,6 @@ inputAddTodo.addEventListener('submit', addTodo)
 inputSearchTodo.addEventListener('input', searchTodo)
 todosContainer.addEventListener('click', removeTodo)
 
+getTodosIntoLocaleStorage()
 updatePresentDate()
 updateTotalTasks()
